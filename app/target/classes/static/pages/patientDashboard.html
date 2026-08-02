@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+
+    <link rel="icon" href="../assets/images/favicon.ico">
+    <link rel="stylesheet" href="../assets/css/adminDashboard.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/patientDashboard.css">
+
+    <script src="../js/render.js" defer></script>
+    <script src="../js/util.js" defer></script>
+    <script src="../js/components/header.js" defer></script>
+    <script src="../js/components/footer.js" defer></script>
+    <script type="module" src="../js/components/modals.js"></script>
+</head>
+<body onload="renderContent()">
+    <div class="container">
+        <div class="wrapper">
+            <div id="header"></div>
+
+            <main class="main-content">
+                <section class="dashboard-toolbar">
+                    <input
+                        type="text"
+                        id="searchBar"
+                        class="searchBar"
+                        placeholder="Search Bar for custom output"
+                        autocomplete="off"
+                    >
+
+                    <div class="filter-wrapper">
+                        <select class="filter-select" id="filterTime">
+                            <option value="">Filter by time</option>
+                            <option value="AM">Morning</option>
+                            <option value="PM">Evening</option>
+                        </select>
+
+                        <select class="filter-select" id="filterSpecialty">
+                            <option value="">Filter by specialty</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Orthopedist">Orthopedist</option>
+                            <option value="Pediatrician">Pediatrician</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section id="content"></section>
+            </main>
+
+            <div id="footer"></div>
+        </div>
+    </div>
+
+    <div id="rippleOverlay" class="ripple-overlay"></div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="appointmentModal" class="modalApp">
+        <button id="closeAppointmentModal" class="modalApp-close" type="button">
+            &times;
+        </button>
+
+        <h2>Book Appointment</h2>
+
+        <form id="appointmentForm">
+            <input type="hidden" id="selectedDoctorId">
+
+            <input
+                type="date"
+                id="appointmentDate"
+                required
+            >
+
+            <select id="appointmentTime" required>
+                <option value="">Select available time</option>
+            </select>
+
+            <button type="submit" class="booking-confirm-btn">
+                Confirm Booking
+            </button>
+        </form>
+    </div>
+
+    <script type="module" src="../js/patientDashboard.js" defer></script>
+</body>
+</html>

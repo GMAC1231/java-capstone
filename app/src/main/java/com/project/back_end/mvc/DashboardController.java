@@ -1,11 +1,9 @@
-package com.project.back_end.controllers;
+package com.project.back_end.mvc;
 
 import com.project.back_end.services.TokenService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.util.Map;
 
 @Controller
 public class DashboardController {
@@ -18,10 +16,9 @@ public class DashboardController {
 
     @GetMapping("/adminDashboard/{token}")
     public String adminDashboard(@PathVariable String token) {
-        Map<String, String> validationResult =
-                tokenService.validateToken(token, "admin");
+        boolean valid = tokenService.validateToken(token, "admin");
 
-        if (validationResult == null || validationResult.isEmpty()) {
+        if (valid) {
             return "admin/adminDashboard";
         }
 
@@ -30,10 +27,9 @@ public class DashboardController {
 
     @GetMapping("/doctorDashboard/{token}")
     public String doctorDashboard(@PathVariable String token) {
-        Map<String, String> validationResult =
-                tokenService.validateToken(token, "doctor");
+        boolean valid = tokenService.validateToken(token, "doctor");
 
-        if (validationResult == null || validationResult.isEmpty()) {
+        if (valid) {
             return "doctor/doctorDashboard";
         }
 

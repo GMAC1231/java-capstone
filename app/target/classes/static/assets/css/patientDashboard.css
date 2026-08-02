@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card-actions {
+    margin: 18px -22px -22px;
+    padding: 15px;
+    background: #013f40;
+    text-align: center;
+    border-radius: 0 0 14px 14px;
+    transition: background-color 0.25s ease;
+}
+
+.card-actions:hover {
+    background: #012f30;
+}
+
+.card-actions button,
+.book-now-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 24px;
+    background: #fff;
+    color: #015c5d;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ripple-overlay {
+    position: fixed;
+    z-index: 2000;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: rgba(1, 125, 126, 0.32);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.65s ease, opacity 0.65s ease;
+}
+
+.ripple-overlay.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(35);
+}
+
+.modalApp {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    z-index: 1500;
+    width: min(560px, 94%);
+    padding: 30px 24px;
+    background: #fff;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -12px 35px rgba(0, 0, 0, 0.22);
+    transform: translate(-50%, 110%);
+    transition: transform 0.35s ease;
+}
+
+.modalApp.active {
+    transform: translate(-50%, 0);
+}
+
+.modalApp h2 {
+    margin-bottom: 20px;
+    color: #015c5d;
+    text-align: center;
+}
+
+.modalApp-close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    border: none;
+    background: transparent;
+    color: #555;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modalApp form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modalApp input,
+.modalApp select {
+    width: 90%;
+    margin: 8px 0;
+    padding: 13px 14px;
+    border: 1px solid #b0c2c3;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.booking-confirm-btn {
+    margin-top: 14px;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 25px;
+    background: #013f40;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.25s ease;
+}
+
+.booking-confirm-btn:hover {
+    filter: brightness(1.2);
+}
+
+@media (max-width: 600px) {
+    .modalApp {
+        width: 100%;
+    }
+
+    .modalApp input,
+    .modalApp select {
+        width: 100%;
+    }
+}

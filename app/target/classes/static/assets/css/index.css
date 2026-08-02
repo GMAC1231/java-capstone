@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+body {
+    background: #f4f7f8;
+    color: #173234;
+}
+
+.container {
+    min-height: 100vh;
+}
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    min-height: calc(100vh - 140px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    background:
+        linear-gradient(rgba(0, 63, 65, 0.58), rgba(0, 63, 65, 0.58)),
+        url("../images/clinic-background.jpg") center/cover fixed no-repeat;
+}
+
+.role-selection {
+    width: min(650px, 95%);
+    padding: 48px 35px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 18px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+.role-selection h2 {
+    margin-bottom: 35px;
+    color: #015c5d;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+}
+
+.role-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.role-btn,
+.dashboard-btn,
+.button,
+.adminBtn {
+    border: none;
+    border-radius: 10px;
+    padding: 14px 30px;
+    background: #015c5d;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.role-btn:hover,
+.dashboard-btn:hover,
+.button:hover,
+.adminBtn:hover {
+    background: #017d7e;
+    transform: translateY(-2px);
+}
+
+.input-field,
+.select-dropdown {
+    width: 100%;
+    padding: 13px 15px;
+    margin: 10px 0;
+    border: 1px solid #b7c7c8;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.input-field:focus,
+.select-dropdown:focus {
+    border-color: #017d7e;
+    box-shadow: 0 0 0 3px rgba(1, 125, 126, 0.15);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.modal-content {
+    position: relative;
+    width: min(460px, 100%);
+    padding: 32px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    color: #555;
+    font-size: 32px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #015c5d;
+}
+
+.login-form {
+    margin-top: 20px;
+}
+
+.header,
+.footer {
+    width: 100%;
+    padding: 18px 5%;
+    background: #013f40;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header img {
+    max-height: 50px;
+}
+
+.header nav {
+    display: flex;
+    gap: 18px;
+}
+
+.header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .role-selection {
+        padding: 35px 20px;
+    }
+
+    .role-buttons {
+        flex-direction: column;
+    }
+
+    .role-btn {
+        width: 100%;
+    }
+
+    .header,
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}

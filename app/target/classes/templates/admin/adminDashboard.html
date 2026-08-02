@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/adminDashboard.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+
+    <script th:src="@{/js/render.js}" defer></script>
+    <script th:src="@{/js/util.js}" defer></script>
+    <script th:src="@{/js/components/header.js}" defer></script>
+    <script th:src="@{/js/components/footer.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="header"></div>
+
+            <main class="main-content">
+                <section class="dashboard-toolbar">
+                    <input
+                        type="text"
+                        id="searchBar"
+                        class="searchBar"
+                        placeholder="Search by doctor name"
+                        autocomplete="off"
+                    >
+
+                    <div class="filter-wrapper">
+                        <select id="filterTime" class="filter-select">
+                            <option value="">Sort by time</option>
+                            <option value="AM">Morning</option>
+                            <option value="PM">Evening</option>
+                        </select>
+
+                        <select id="filterSpecialty" class="filter-select">
+                            <option value="">Filter by specialty</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Neurologist">Neurologist</option>
+                            <option value="Orthopedist">Orthopedist</option>
+                            <option value="Pediatrician">Pediatrician</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                        </select>
+
+                        <button id="addDoctorBtn" class="adminBtn" type="button">
+                            Add Doctor
+                        </button>
+                    </div>
+                </section>
+
+                <section id="content" class="doctor-content"></section>
+            </main>
+
+            <div id="footer"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <div id="modal-body">
+                <h2>Add Doctor</h2>
+
+                <form id="addDoctorForm" class="doctor-form">
+                    <input type="text" id="doctorName" placeholder="Doctor name" required>
+                    <input type="text" id="doctorSpecialty" placeholder="Specialty" required>
+                    <input type="email" id="doctorEmail" placeholder="Email" required>
+                    <input type="password" id="doctorPassword" placeholder="Password" required>
+                    <input type="text" id="doctorPhone" placeholder="10-digit phone number" required>
+
+                    <textarea
+                        id="availableTimes"
+                        placeholder="Available times, separated by commas"
+                    ></textarea>
+
+                    <button type="submit" class="button">Save Doctor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" th:src="@{/js/services/adminDashboard.js}" defer></script>
+    <script type="module" th:src="@{/js/components/doctorCard.js}" defer></script>
+</body>
+</html>

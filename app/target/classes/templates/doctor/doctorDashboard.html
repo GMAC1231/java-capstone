@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard</title>
+
+    <link rel="icon" th:href="@{/assets/images/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/assets/css/adminDashboard.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/doctorDashboard.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+
+    <script th:src="@{/js/render.js}" defer></script>
+    <script th:src="@{/js/util.js}" defer></script>
+    <script th:src="@{/js/components/header.js}" defer></script>
+    <script th:src="@{/js/components/footer.js}" defer></script>
+    <script th:src="@{/js/components/patientRows.js}" defer></script>
+    <script th:src="@{/js/services/patientServices.js}" defer></script>
+    <script type="module" th:src="@{/js/services/doctorDashboard.js}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="header"></div>
+
+            <main class="main-content">
+                <section class="doctor-toolbar">
+                    <input
+                        type="text"
+                        id="searchBar"
+                        class="searchBar"
+                        placeholder="Search patient by name"
+                        autocomplete="off"
+                    >
+
+                    <div class="filter-wrapper">
+                        <button id="todayAppointmentsBtn" class="button" type="button">
+                            Today's Appointments
+                        </button>
+
+                        <label for="appointmentDate">Select date:</label>
+                        <input type="date" id="appointmentDate">
+                    </div>
+                </section>
+
+                <section class="table-wrapper">
+                    <table id="patientTable">
+                        <thead>
+                            <tr>
+                                <th>Patient ID</th>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Prescription</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientTableBody">
+                            <tr>
+                                <td colspan="5" class="noPatientRecord">
+                                    No patient records available.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </main>
+
+            <div id="footer"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+</body>
+</html>
