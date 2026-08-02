@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Management System</title>
+
+    <link rel="icon" href="./assets/images/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="./js/util.js" defer></script>
+    <script src="./js/render.js" defer></script>
+    <script src="./js/components/header.js" defer></script>
+    <script src="./js/components/footer.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="header"></div>
+
+            <main class="main-content">
+                <section class="role-selection">
+                    <h2 id="roleHeading">Select Your Role</h2>
+
+                    <div class="role-buttons">
+                        <button id="adminBtn" class="role-btn" onclick="selectRole('admin')">
+                            Admin
+                        </button>
+
+                        <button id="doctorBtn" class="role-btn" onclick="selectRole('doctor')">
+                            Doctor
+                        </button>
+
+                        <button id="patientBtn" class="role-btn" onclick="selectRole('patient')">
+                            Patient
+                        </button>
+                    </div>
+                </section>
+            </main>
+
+            <div id="footer"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <span id="closeModal" class="close" aria-label="Close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        function selectRole(role) {
+            localStorage.setItem("userRole", role);
+
+            const modal = document.getElementById("modal");
+            const modalBody = document.getElementById("modal-body");
+
+            modalBody.innerHTML = `
+                <h3>${role.charAt(0).toUpperCase() + role.slice(1)} Login</h3>
+                <form id="${role}LoginForm" class="login-form">
+                    <input
+                        type="${role === "admin" ? "text" : "email"}"
+                        id="${role}Username"
+                        class="input-field"
+                        placeholder="${role === "admin" ? "Username" : "Email"}"
+                        required
+                    >
+                    <input
+                        type="password"
+                        id="${role}Password"
+                        class="input-field"
+                        placeholder="Password"
+                        required
+                    >
+                    <button type="submit" class="dashboard-btn">Login</button>
+                </form>
+            `;
+
+            modal.style.display = "flex";
+            modal.setAttribute("aria-hidden", "false");
+        }
+
+        document.getElementById("closeModal").addEventListener("click", function () {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+            modal.setAttribute("aria-hidden", "true");
+        });
+
+        window.addEventListener("click", function (event) {
+            const modal = document.getElementById("modal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+                modal.setAttribute("aria-hidden", "true");
+            }
+        });
+    </script>
+
+    <script type="module" src="./js/services/index.js" defer></script>
+</body>
+</html>
